@@ -44,3 +44,21 @@ kubectl -n green logs sample-1234abcd -c sample
 __________________________________________________________
 __________________________________________________________
 <br><br>
+
+
+
+
+# k9s
+
+<br><br><br><br>
+
+
+
+
+
+## Logs
+
+<br><br>
+
+#### Logs not showing in Pod
+- You can press 0
