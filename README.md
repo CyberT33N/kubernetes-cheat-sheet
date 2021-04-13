@@ -61,4 +61,8 @@ __________________________________________________________
 <br><br>
 
 #### Logs not showing in Pod
-- You can press 0
+- You can press 0 or:
+```bash
+~/.k9s/config.yml
+k9s.logger.sinceSeconds=-1
+```
