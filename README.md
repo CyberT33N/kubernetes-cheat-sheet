@@ -50,11 +50,27 @@ __________________________________________________________
 
 # k9s
 
+<br><br>
+
+
+
+## Deploy
+
+<br><br>
+
+#### See current deployments
+```bash
+k9s
+:deploy
+```
+
+
+
+
+
+
+
 <br><br><br><br>
-
-
-
-
 
 ## Logs
 
