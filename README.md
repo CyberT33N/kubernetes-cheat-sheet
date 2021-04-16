@@ -64,7 +64,13 @@ k9s
 :deploy
 ```
 
+#### Restart deployment
+```bash
+k9s
+:deploy
 
+# Now choose your deployment and press s. Now you can set the replica to 0 and it will shutdown. Then after this set it again to the amount of replicas which it has before. Then it will restart.
+```
 
 
 
