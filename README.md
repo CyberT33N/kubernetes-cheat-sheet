@@ -19,8 +19,38 @@ Kubernetes Cheat Sheet with the most needed stuff..
 <br><br><br><br>
 
 
+## Pod
+
+<br><br>
+
+#### Create Pod
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envar-demo
+  labels:
+    purpose: demonstrate-envars
+spec:
+  containers:
+  - name: envar-demo-container
+    image: gcr.io/google-samples/node-hello:1.0
+    env:
+    - name: DEMO_GREETING
+      value: "Hello from the environment"
+    - name: DEMO_FAREWELL
+      value: "Such a sweet sorrow"
+```
+```bash
+kubectl apply -f https://k8s.io/examples/pods/inject/envars.yaml
+```
 
 
+
+
+
+
+<br><br>
 
 ## Logs
 
