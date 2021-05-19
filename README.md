@@ -80,6 +80,24 @@ __________________________________________________________
 
 # k9s
 
+
+<br><br>
+
+## statefulset
+```bash
+k9s
+:sts
+```
+
+<br><br>
+
+## secrets
+```bash
+k9s
+:secrets
+```
+
+<br><br>
 <br><br>
 
 
