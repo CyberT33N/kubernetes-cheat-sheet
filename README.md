@@ -136,3 +136,72 @@ k9s
 ~/.k9s/config.yml
 k9s.logger.sinceSeconds=-1
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________________________
+__________________________________________________
+<br><br>
+
+
+
+
+
+## Container
+
+<br><br>
+
+#### livenessProbe / readinessProbe
+```yaml
+livenessProbe:
+  initialDelaySeconds: 120
+  httpGet:
+    path: /health
+    port: backend
+    httpHeaders:
+      - name: "crazy-header"
+        value: "123"
+readinessProbe:
+  initialDelaySeconds: 60
+  httpGet:
+    path: /health
+    port: backend
+    httpHeaders:
+      - name: "crazy-header"
+        value: "123"
+```
+
