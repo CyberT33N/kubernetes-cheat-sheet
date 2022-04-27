@@ -118,9 +118,84 @@ ______________________________________
 
 # kubectl
 
-<br><br><br><br>
+<br><br>
+<br><br>
 
+## change namespace
+```bash
+kubectl config set-context --current --namespace=namespaceNameHere
+```
 
+## change context
+```bash
+# Show available contexts
+kubectl config get-contexts
+
+# Switch context
+kubectl config use contextNameHere
+```
+ 
+ 
+ 
+## Create Cronjob
+```bash
+kubectl apply -f test/cronjob.yaml -n namespaceNameHere
+```
+
+```yaml
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mongodb-connection-test
+  labels:
+    group: test
+spec:
+  suspend: false
+  schedule: "* * * * *"
+  jobTemplate:
+    metadata:
+      name: mongodb-connection-test
+      labels:
+        group: test
+    spec:
+      template:
+        spec:
+          containers:
+          - image: nexus.test.local:5000/test:53e89b8
+            name: mongodb-connection-test
+            env:
+            - name: MONGO_OPTION_useNewUrlParser
+              value: 'true'
+            - name: MONGO_OPTION_useUnifiedTopology
+              value: 'true'
+            - name: MONGODB_USERNAME
+              value: root
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mongodb-root-password
+                  name: mongodb
+            - name: AUTHENTICATION_DATABASE
+              value: admin
+            - name: MONGODB_ADDRESS
+              value: 'mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongodb:27017/test?authSource=${AUTHENTICATION_DATABASE}'
+            resources:
+              limits:
+                cpu: 100m
+                memory: 100Mi
+              requests:
+                cpu: 50m
+                memory: 50Mi
+          restartPolicy: OnFailure
+ ```
+ 
+ 
+ 
+ 
+ <br><br>
+ <br><br>
+ 
+ 
 ## Pod
 
 <br><br>
