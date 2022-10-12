@@ -119,6 +119,32 @@ ______________________________________
 # kubectl
 
 <br><br>
+
+## Pod
+- https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+<br><br>
+
+### Get Pod Names
+```shell
+kubectl get pod -n myNamespace
+```
+
+<br><br>
+
+### Kill pod
+```shell
+kubectl delete pod your-pod-xxxxxx-xxxx6 -n myNamespace
+```
+
+
+
+
+
+
+
+
+<br><br>
 <br><br>
 
 ## change namespace
