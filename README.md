@@ -143,6 +143,28 @@ kubectl delete pod your-pod-xxxxxx-xxxx6 -n myNamespace
 
 
 
+<br><br>
+<br><br>
+
+## Deployment
+
+<br><br>
+
+### Restart deployment
+- https://kubernetes.io/docs/reference/kubectl/cheatsheet/#updating-resources
+```shell
+kubectl rollout restart deployment deploymentName -n myNamespace
+```
+
+<br><br>
+<br><br>
+
+
+
+
+
+
+
 
 <br><br>
 <br><br>
