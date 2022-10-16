@@ -358,3 +358,81 @@ readinessProbe:
         value: "123"
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________________________
+__________________________________________________
+<br><br>
+
+
+
+
+
+## minikube
+
+<br><br>
+
+### Installation
+- https://kubernetes.io/de/docs/tasks/tools/install-minikube/#linux
+```yaml
+# Sie können Minikube unter Linux installieren, indem Sie eine statische Binärdatei herunterladen:
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+  && chmod +x minikube
+  
+# So fügen Sie die Minikube-Programmdatei auf einfache Weise Ihrem Pfad hinzu:
+sudo cp minikube /usr/local/bin && rm minikube
+```
+
