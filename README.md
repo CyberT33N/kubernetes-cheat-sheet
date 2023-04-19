@@ -436,3 +436,9 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 sudo cp minikube /usr/local/bin && rm minikube
 ```
 
+<br><br>
+
+### Deinstallation
+```shell
+minikube delete
+```
