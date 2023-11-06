@@ -387,7 +387,37 @@ readinessProbe:
 
 
 
+<br><br>
+<br><br>
 
+______________________________________
+______________________________________
+
+<br><br>
+<br><br>
+
+
+# Helm Charts
+
+<br><br>
+
+## Instances
+```
+abc_push: 
+  hpa: 
+    # enabling hpa disables 'replicas' field.
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 1
+
+  resources:
+    requests:
+      memory: "250Mi"
+      cpu: 100m
+    limits:
+      memory: "500Mi"
+      cpu: 200m
+```
 
 
 
