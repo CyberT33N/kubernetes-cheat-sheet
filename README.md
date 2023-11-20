@@ -420,6 +420,17 @@ abc_push:
 ```
 
 
+<br><br>
+
+## Use heml chart values an environment variable in your deployment
+```
+env:
+  - name: 'APP_VERSION'
+    value: {{ .Chart.AppVersion | squote }}
+  - name: 'IMAGE_VERSION'
+    value: {{ .Values.test_backend.version | squote }}
+```
+
 
 
 
