@@ -118,6 +118,30 @@ ______________________________________
 
 # kubectl
 
+
+
+
+
+<br><br>
+<br><br>
+
+## Port Forward
+- https://kubernetes.io/docs/reference/kubectl/cheatsheet/#updating-resources
+```shell
+kubectl port-forward -n "green" deployment/test-manager 9211:80
+kubectl port-forward -n "green" service/bitnami-elasticsearch 1335:9200
+```
+
+## Kill Port Forward
+```shell
+sudo kill -9 $(sudo lsof -t -i:9211) & sudo kill -9 $(sudo lsof -t -i:1335)
+```
+
+
+
+
+
+
 <br><br>
 
 ## Pod
@@ -136,6 +160,7 @@ kubectl get pod -n myNamespace
 ```shell
 kubectl delete pod your-pod-xxxxxx-xxxx6 -n myNamespace
 ```
+
 
 
 
