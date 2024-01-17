@@ -488,6 +488,9 @@ __________________________________________________
 
 
 ## minikube
+- The context for minikube will be created automatically. If you accedentily deleted it you can just restart minikube to create the minikube context again
+
+
 
 <br><br>
 
@@ -502,6 +505,7 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 sudo cp minikube /usr/local/bin && rm minikube
 ```
 
+<br><br>
 <br><br>
 
 ### Deinstallation
