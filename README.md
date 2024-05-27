@@ -119,12 +119,38 @@ ______________________________________
 # kubectl
 
 
+<br><br>
+<br><br>
 
 
 ## Check current resource usage
 ```shell
 kubectl top nodes
 ```
+
+
+
+
+
+
+<br><br>
+<br><br>
+
+
+## Events
+
+<br><br>
+
+### Check event logs
+```shell
+kubectl get events -n test --sort-by='.metadata.creationTimestamp'
+```
+
+
+
+
+
+
 
 
 
@@ -323,6 +349,22 @@ kubectl -n green logs sample-1234abcd
 ```bash
 kubectl -n green logs sample-1234abcd -c sample
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
