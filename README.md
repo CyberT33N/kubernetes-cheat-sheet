@@ -121,6 +121,12 @@ ______________________________________
 
 
 
+## Check current resource usage
+```shell
+kubectl top nodes
+```
+
+
 
 <br><br>
 <br><br>
