@@ -119,6 +119,29 @@ ______________________________________
 # kubectl
 
 
+
+
+
+
+<br><br>
+<br><br>
+
+## Logs
+
+<br><br>
+
+## Get previous logs of pod
+```shell
+kubectl logs mongodb-data-0 -n test --previous
+```
+
+
+
+
+
+
+
+
 <br><br>
 <br><br>
 
