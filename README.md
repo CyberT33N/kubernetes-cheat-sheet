@@ -450,6 +450,7 @@ __________________________________________________
 - https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
 - deployment.yaml
 - In diesem Beispiel benutzen wir abc-test als Basis Image für den Container. Der Init Container wird auf dem Deployment abc-backend angewendet
+- You can use sleep the keep the container active to use shell later
 ```yaml
   initContainers:
   - name: migrations-helper
