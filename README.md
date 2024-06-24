@@ -118,7 +118,7 @@ ______________________________________
 
 # kubectl
 
-
+<details><summary>Click to expand..</summary>
 
 
 
@@ -391,6 +391,7 @@ kubectl -n green logs sample-1234abcd
 kubectl -n green logs sample-1234abcd -c sample
 ```
 
+</details> 
 
 
 
@@ -411,6 +412,73 @@ kubectl -n green logs sample-1234abcd -c sample
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________________________
+__________________________________________________
+<br><br>
+
+# Pods
+
+## Init Container
+- https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+- deployment.yaml
+- In diesem Beispiel benutzen wir abc-test als Basis Image für den Container. Der Init Container wird auf dem Deployment abc-backend angewendet
+```yaml
+  initContainers:
+  - name: migrations-helper
+    resources:
+      requests:
+        memory: "50Mi"
+        cpu: 25m
+      limits:
+        memory: "100Mi"
+        cpu: 100m
+    image: '{{ .Values.docker.registry }}/{{ .Values.abc_test.name }}:{{ .Values.abc_test.version }}'
+    command:
+      - sh
+      - -c
+      - |
+        # ==== DEPENDENCIES ====
+        echo "[INIT CONTAINER] Install bash.."
+        apk add --no-cache bash
+
+        # ==== VALIDATE ====
+        echo "[INIT CONTAINER] Validating script init.."
+        # ..
+
+        sleep 6000
+  containers:
+    # backend (abc-backend)
+    - name: {{ .Values.abc_backend.name }}
+    # ....
+```
 
 
 
