@@ -446,6 +446,9 @@ __________________________________________________
 
 # Pods
 
+<br><br>
+<br><br>
+
 ## Init Container
 - https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
 - deployment.yaml
@@ -482,8 +485,33 @@ __________________________________________________
 ```
 
 
+<br><br>
+<br><br>
 
+### Multiple Init Container
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  initContainers:
+  - name: init-container-1
+    image: busybox
+    command: ['sh', '-c', 'echo Init Container 1; sleep 5']
+  - name: init-container-2
+    image: busybox
+    command: ['sh', '-c', 'echo Init Container 2; sleep 5']
+  containers:
+  - name: myapp-container
+    image: busybox
+    command: ['sh', '-c', 'echo Main Container; sleep 3600']
+```
 
+```shell
+kubectl config use-context minikube
+kubectl apply -f pod.yaml
+```
 
 
 
