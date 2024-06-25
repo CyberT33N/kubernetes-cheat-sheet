@@ -446,6 +446,29 @@ __________________________________________________
 
 # Pods
 
+
+
+
+## Restart Policy
+- https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy
+```
+Always: Automatically restarts the container after any termination.
+OnFailure: Only restarts the container if it exits with an error (non-zero exit status).
+Never: Does not automatically restart the terminated container.
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 <br><br>
 <br><br>
 
