@@ -450,6 +450,7 @@ __________________________________________________
 <br><br>
 
 ## Init Container
+- **Will be executed everytime you start your deployment. If you want to execute something before you deploy than you better choose a pre-deploy Hook**
 - https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
 - deployment.yaml
 - In diesem Beispiel benutzen wir abc-test als Basis Image für den Container. Der Init Container wird auf dem Deployment abc-backend angewendet
