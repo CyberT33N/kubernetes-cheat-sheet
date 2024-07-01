@@ -311,6 +311,8 @@ ____________________________________________________________
 <br><br>
 
 # Job
+
+<br><br>
  
 ### Create job
 ```bash
@@ -318,9 +320,18 @@ kubectl config use-context minikube
 kubectl apply -f test/job.yaml -n namespaceNameHere
 ```
 -f means file
+- **In order to re-apply the job you must delete it before
 
- 
- 
+
+<br><br>
+<br><br>
+
+ ### Delete job
+ ```bash
+kubectl config use-context minikube
+kubectl delete -f test/job.yaml -n namespaceNameHere
+```
+-f means file
 
 
 
