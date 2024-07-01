@@ -158,6 +158,10 @@ kubectl top nodes
 
 <br><br>
 <br><br>
+____________________________________________________________
+____________________________________________________________
+<br><br>
+<br><br>
 
 
 ## Events
@@ -179,6 +183,10 @@ kubectl get events -n test --sort-by='.metadata.creationTimestamp'
 
 <br><br>
 <br><br>
+____________________________________________________________
+____________________________________________________________
+<br><br>
+<br><br>
 
 ## Port Forward
 - https://kubernetes.io/docs/reference/kubectl/cheatsheet/#updating-resources
@@ -197,6 +205,11 @@ sudo kill -9 $(sudo lsof -t -i:9211) & sudo kill -9 $(sudo lsof -t -i:1335)
 
 
 
+<br><br>
+<br><br>
+____________________________________________________________
+____________________________________________________________
+<br><br>
 <br><br>
 
 ## Pod
@@ -223,6 +236,10 @@ kubectl delete pod your-pod-xxxxxx-xxxx6 -n myNamespace
 
 
 
+<br><br>
+<br><br>
+____________________________________________________________
+____________________________________________________________
 <br><br>
 <br><br>
 
@@ -262,10 +279,63 @@ kubectl config get-contexts
 # Switch context
 kubectl config use contextNameHere
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+____________________________________________________________
+____________________________________________________________
+<br><br>
+<br><br>
+
+# Job
+ 
+### Create job
+```bash
+kubectl config use-context minikube
+kubectl apply -f test/job.yaml -n namespaceNameHere
+```
+-f means file
+
  
  
+
+
+
+
  
-## Create Cronjob
+<br><br>
+<br><br>
+____________________________________________________________
+____________________________________________________________
+<br><br>
+<br><br>
+
+# Cronjob
+ 
+### Create Cronjob
 ```bash
 kubectl apply -f test/cronjob.yaml -n namespaceNameHere
 ```
@@ -373,6 +443,13 @@ kubectl apply -f https://k8s.io/examples/pods/inject/envars.yaml
 
 
 
+
+<br><br>
+<br><br>
+___________________________________________
+___________________________________________
+
+<br><br>
 <br><br>
 
 ## Logs
