@@ -898,6 +898,14 @@ minikube delete
 <br><br>
 
 ## Start
+
+- If you did not already have the docker group then create it and then **log out and log in again**
+```shell
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+
 ```shell
 minikube start \
    --cpus=8 \
@@ -940,6 +948,23 @@ done
 echo "Minikube Loadbalancer can be accessed with ${FROM_IP}.nip.io"
 
 ```
+- If you are hanging while the start process at the message container creating then try `minikube logs` to check whats going on. When you have firewall rules then you may have a problem here with docker and your firewall
+    - Exiting due to DRV_CP_ENDPOINT: Unable to get control-plane node minikube endpoint: failed to lookup ip for ""
+      - If you deny all outgoing traffic via ufw make sure to allow outgoing traffic on your desired network adapter to ipv6 range at port 22 that docker has ssh acces
+      ```
+      sudo ufw allow out on nordlynx from fe80::/64 to any port 22
+      ```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
