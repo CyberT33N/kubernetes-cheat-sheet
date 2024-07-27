@@ -175,10 +175,39 @@ ______________________________________
 
 # Storage Class
 - https://kubernetes.io/docs/concepts/storage/storage-classes/
-```
+```shell
 kubectl get storageclass
 ```
 
+
+# Use default for pvc
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-pv
+spec:
+  capacity:
+    storage: 10Gi # Ändere dies nach Bedarf
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data # Der Pfad auf deinem Minikube-Host
+  storageClassName: standard
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minio-pvc
+  namespace: minio-dev # Stelle sicher, dass dies mit dem Namespace übereinstimmt
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi # Sollte gleich oder kleiner als der PV-Speicher sein
+  storageClassName: standard
+```
 
 
 
