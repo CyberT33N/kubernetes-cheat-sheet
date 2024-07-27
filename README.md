@@ -164,6 +164,45 @@ ______________________________________
 
 
 
+<br><br>
+<br><br>
+
+______________________________________
+______________________________________
+
+<br><br>
+<br><br>
+
+# Storage Class
+- https://kubernetes.io/docs/concepts/storage/storage-classes/
+```
+kubectl get storageclass
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
