@@ -282,6 +282,12 @@ spec:
           mountPath: "/etc/secret-volume"
 ```
 
+
+## Create base64 string
+```shell
+echo -n 'test' | base64
+```
+
 ## Caution
 Caution:
 
@@ -299,13 +305,63 @@ For more guidelines to manage and improve the security of your Secrets, refer to
 
 
 
+<br><br>
+<br><br>
+
+
+
+## Using Secrets as environment variables
+- https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <br><br>
+<br><br>
 __________________________________________________
 __________________________________________________
 <br><br>
+<br><br>
+
 
 # Pods
 
