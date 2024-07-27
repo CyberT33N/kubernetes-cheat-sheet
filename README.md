@@ -410,6 +410,97 @@ Empfehlung
 - **Für komplexere Anwendungen oder wenn du verschiedene Services über unterschiedliche Pfade/Hostnamen erreichbar machen willst:** Ingress ist die bessere Wahl.
 
 
+- If you create an POD and you want to assign a NodePort to it then you have to create a service for it:
+```yaml
+# Deploys a new MinIO Pod into the metadata.namespace Kubernetes namespace
+#
+# The `spec.containers[0].args` contains the command run on the pod
+# The `/data` directory corresponds to the `spec.containers[0].volumeMounts[0].mountPath`
+# That mount path corresponds to a Kubernetes Persistent Volume Claim
+# 
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: minio
+  name: minio
+  namespace: minio-dev # Change this value to match the namespace metadata.name
+spec:
+  containers:
+  - name: minio
+    image: quay.io/minio/minio:latest
+    command:
+    - /bin/bash
+    - -c
+    args: 
+    - minio server /data --console-address :9001
+    volumeMounts:
+    - mountPath: /data
+      name: minio-storage
+  nodeSelector:
+    kubernetes.io/hostname: minikube # Correct node hostname
+  volumes:
+  - name: minio-storage
+    persistentVolumeClaim:
+      claimName: minio-pvc # Refer to the PVC created above
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+  namespace: minio-dev
+spec:
+  type: NodePort
+  selector:
+    app: minio
+  ports:
+  - name: api-port      # Name des API-Ports
+    protocol: TCP
+    port: 9000         # Der Port, auf dem der Service intern läuft (API-Port)
+    targetPort: 9000   # Der Port des Containers, auf den der Service weiterleitet
+    nodePort: 30000    # Der NodePort, der auf jedem Knoten verfügbar sein wird
+  - name: webui-port    # Name des WebUI-Ports
+    protocol: TCP
+    port: 9001         # Der Port für die WebUI
+    targetPort: 9001   # Der Port des Containers, auf den der Service weiterleitet
+    nodePort: 30001    # Der NodePort für die WebUI
+```
+- You can define multiple NodePort at a single service but you must give them a name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
