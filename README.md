@@ -285,6 +285,209 @@ kubectl apply -f pod.yaml
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________________________
+__________________________________________________
+<br><br>
+
+
+### PVC (PersistentVolumeClaim)
+- Will be used to claim a PV (PersistentVolume)
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-pv
+spec:
+  capacity:
+    storage: 10Gi # Ändere dies nach Bedarf
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data # Der Pfad auf deinem Minikube-Host
+  storageClassName: manual
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minio-pvc
+  namespace: minio-dev # Stelle sicher, dass dies mit dem Namespace übereinstimmt
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi # Sollte gleich oder kleiner als der PV-Speicher sein
+  storageClassName: manual
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________________________
+__________________________________________________
+<br><br>
+
+
+
+
+
+# Jobs
+- Jobs can contain different types of creation like e.g. Namespace, or PVC creations. We use `---` to seperate them and this to apply the job `kubectl apply -f ./minio-dev.yaml`
+```yaml
+# Deploys a new Namespace for the MinIO Pod
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio-dev # Change this value if you want a different namespace name
+  labels:
+    name: minio-dev # Change this value to match metadata.name
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-pv
+spec:
+  capacity:
+    storage: 10Gi # Ändere dies nach Bedarf
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data # Der Pfad auf deinem Minikube-Host
+  storageClassName: manual
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minio-pvc
+  namespace: minio-dev # Stelle sicher, dass dies mit dem Namespace übereinstimmt
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi # Sollte gleich oder kleiner als der PV-Speicher sein
+  storageClassName: manual
+---
+# Deploys a new Namespace for the MinIO Pod
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio-dev # Change this value if you want a different namespace name
+  labels:
+    name: minio-dev # Change this value to match metadata.name
+---
+# Deploys a new MinIO Pod into the metadata.namespace Kubernetes namespace
+#
+# The `spec.containers[0].args` contains the command run on the pod
+# The `/data` directory corresponds to the `spec.containers[0].volumeMounts[0].mountPath`
+# That mount path corresponds to a Kubernetes Persistent Volume Claim
+# 
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: minio
+  name: minio
+  namespace: minio-dev # Change this value to match the namespace metadata.name
+spec:
+  containers:
+  - name: minio
+    image: quay.io/minio/minio:latest
+    command:
+    - /bin/bash
+    - -c
+    args: 
+    - minio server /data --console-address :9001
+    volumeMounts:
+    - mountPath: /data
+      name: minio-storage
+  nodeSelector:
+    kubernetes.io/hostname: minikube # Correct node hostname
+  volumes:
+  - name: minio-storage
+    persistentVolumeClaim:
+      claimName: minio-pvc # Refer to the PVC created above
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+  namespace: minio-dev
+spec:
+  type: NodePort
+  selector:
+    app: minio
+  ports:
+  - name: api-port      # Name des API-Ports
+    protocol: TCP
+    port: 9000         # Der Port, auf dem der Service intern läuft (API-Port)
+    targetPort: 9000   # Der Port des Containers, auf den der Service weiterleitet
+    nodePort: 30000    # Der NodePort, der auf jedem Knoten verfügbar sein wird
+  - name: webui-port    # Name des WebUI-Ports
+    protocol: TCP
+    port: 9001         # Der Port für die WebUI
+    targetPort: 9001   # Der Port des Containers, auf den der Service weiterleitet
+    nodePort: 30001    # Der NodePort für die WebUI
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br><br>
 __________________________________________________
 __________________________________________________
