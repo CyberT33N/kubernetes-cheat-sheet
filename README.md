@@ -313,7 +313,18 @@ For more guidelines to manage and improve the security of your Secrets, refer to
 ## Using Secrets as environment variables
 - https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 
+<br><br>
+<br><br>
 
+## Use secret in values.yaml
+```yaml
+keycloak:
+  url: 'http://keycloakx-http:80/auth'
+  secret:
+    name: ais-keycloak-http
+    usernameKey: username
+    passwordKey: password
+```
 
 
 
