@@ -4,6 +4,19 @@ Kubernetes Cheat Sheet with the most needed stuff..
 
 
 
+# GUI
+- https://github.com/kubewall/kubewall?tab=readme-ov-file
+
+
+<br><br>
+
+---
+
+<br><br>
+
+
+
+
 
 # Glossar
 
